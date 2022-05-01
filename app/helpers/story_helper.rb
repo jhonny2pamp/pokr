@@ -4,7 +4,7 @@ module StoryHelper
     {
       "coffee" => "☕",
       "?"      => "⁉️",
-      "null"   => "skipped"
+      "null"   => "Pulada"
     }[point] || point
   end
 

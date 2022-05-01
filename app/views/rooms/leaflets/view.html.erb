@@ -10,19 +10,19 @@
   <div class="col-md-10 col-md-offset-1">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Async room overview</h3>
+        <h3 class="panel-title">Visão geral da sala assíncrona</h3>
       </div>
       <div class="panel-body">
         <div class="clearfix">
           <div class="pull-left"><h3 class="leaflet__name"><%= @room.name %></h3></div>
           <div class="btn-group pull-right" role="group">
             <% if !@room.closed? %>
-              <a href="<%= edit_room_path(@room.slug) %>" class="leaflet__edit btn btn-default">✏️ Edit room</a>
+              <a href="<%= edit_room_path(@room.slug) %>" class="leaflet__edit btn btn-default">✏️ Editar sala</a>
             <% end %>
-            <button type="button" onClick="copyToClipboard()" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" data-original-title="" title="">📻 Share link</button>
-            <a href="<%= summary_room_path(@room.slug)%>" class="btn btn-default ">📊 Summary</a>
+            <button type="button" onClick="copyToClipboard()" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" data-original-title="" title="">📻 Link da sala</button>
+            <a href="<%= summary_room_path(@room.slug)%>" class="btn btn-default ">📊 Resumo</a>
             <% if !@room.closed? %>
-              <%= link_to "🏁 Close room", set_room_status_room_path(@room.slug, status: "draw"), remote: true, method: "post", "data-confirm": "Are you sure to close current room?", class: "leaflet__close btn btn-default"%>
+              <%= link_to "🏁 Fechar sala", set_room_status_room_path(@room.slug, status: "draw"), remote: true, method: "post", "data-confirm": "Você tem certeza que quer fechar esta sala?", class: "leaflet__close btn btn-default"%>
             <% end %>
           </div>
           <div id="tooltip-area"></div>
@@ -33,14 +33,14 @@
           <h4><%= link_to story_item[:link], show_story_link(story_item[:link]), target: "_blank" %></h4>
           <p class="leaflet__ticket-desc"><%= story_item[:desc] %></p>
           <% if story_item[:individuals].blank? %>
-            <div class="alert alert-info" role="alert">No one vote yet...Start sending the room link to your team members.</div>
+            <div class="alert alert-info" role="alert">Ninguém votou ainda... Envie o link da sala para os membros da sua equipe.</div>
           <% else %>
             <table class="table">
               <thead>
-                <th class="col-md-3">Participant</th>
-                <th class="col-md-1">Point</th>
-                <th class="col-md-7">Comment</th>
-                <th class="col-md-1">Operation</th>
+                <th class="col-md-3">Participante</th>
+                <th class="col-md-1">Pontos</th>
+                <th class="col-md-7">Comentário</th>
+                <th class="col-md-1">Ação</th>
               </thead>
               <tbody>
                 <% story_item[:individuals].each do |individual| %>
@@ -59,7 +59,7 @@
                       <span class="finalize-link-col__check-icon <%= "hidden" unless individual[:user_story_point_finalized] %>">
                         ✅
                       </span>
-                      <a href="javascript:void(0);" class="finalize-link-col__finalize-link <%= "hidden" if individual[:user_story_point_finalized] %>">Finalize</a>
+                      <a href="javascript:void(0);" class="finalize-link-col__finalize-link <%= "hidden" if individual[:user_story_point_finalized] %>">Finalizar</a>
                     </td>
                   </tr>
                 <% end %>
@@ -74,5 +74,13 @@
 </div>
 <%= render partial: "rooms/leaflets/board", locals: { room_id: @room.slug } %>
 <script type="text/javascript">
+    App.screens = App.cable.subscriptions.create({ channel: 'RoomsChannel', room: '<%= @room.slug %>' }, {
+        connected: function() {},
+        disconnected: function() {},
+        received: function(data) {
+            console.log(data);
+        }
+    });
+
   Sentry.init({ dsn: 'https://e1070f75c7b24052a1784b4ce297b9e2@sentry.io/221730' });
 </script>

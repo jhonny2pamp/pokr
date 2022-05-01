@@ -7,15 +7,15 @@
   <dd class="room-list-item-text">
     <span>
       <%= room.user_rooms.size %>
-      participants
+      participantes
     </span>
     <span class="divider">·</span>
     <span>
       <%= room.stories.size %>
-      stories
+      histórias
     </span>
     <span class="divider">·</span>
-    <span data-toggle="tooltip" data-placement="top" title="<%= l(room.created_at, format: :short) %>"><%= distance_of_time_in_words_to_now(room.created_at) %> <%= t("ago") %></span>
+    <span data-toggle="tooltip" data-placement="top" title="<%= l(room.created_at, format: :short) %>"><%= distance_of_time_in_words_to_now(room.created_at) %> atrás</span>
     <% if room.duration.present? %>
       <span class="divider">·</span>
       <span>Took <%= distance_of_time_in_words(room.duration) %></span>
@@ -23,7 +23,7 @@
     <% if room.created_by == current_user.id %>
       <span class="divider">·</span>
       <span class="room__delete">
-        <%= link_to room_path(room.slug), remote: true, method: :delete, data: {confirm: "Are you sure to delete '#{room.name}'?"} do %>
+        <%= link_to room_path(room.slug), remote: true, method: :delete, data: {confirm: "Você tem certeza que quer deletar '#{room.name}'?"} do %>
           <i class="fa fa-trash-o" aria-hidden="true"></i>
         <% end %>
       </span>

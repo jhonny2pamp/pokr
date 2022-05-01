@@ -48,15 +48,15 @@ class Leaflets
         data: {status: "draw"}
         dataType: "script"
         success: ->
-          console.log("Room closed.")
+          console.log("Sala fechada.")
 
 
-    originalTitle = "Copy to clipboard"
+    originalTitle = "Copiar para a área de transferência"
     $('[data-toggle="tooltip"]').tooltip(
         container: '#tooltip-area'
         title: originalTitle
     ).on('click', ->
-      $(this).attr('title', 'Copied!').tooltip('fixTitle').tooltip 'show'
+      $(this).attr('title', 'Copiado!').tooltip('fixTitle').tooltip 'show'
       return
     ).mouseleave ->
       $(this).attr('title', originalTitle).tooltip 'fixTitle'

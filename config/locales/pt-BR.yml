@@ -1,0 +1,327 @@
+# encoding: UTF-8
+# pt-BR translations for Devise
+pt-BR:
+  recaptcha:
+    errors:
+      verification_failed: 'reCAPTCHA incorreto, por favor tente novamente.'
+      recaptcha_unreachable: 'reCAPTCHA erro no servidor de verificação, por favor tente novamente.'
+  activerecord:
+    errors:
+      messages:
+        record_invalid: '%{errors}'
+        restrict_dependent_destroy:
+          has_one: Não é possível excluir o registro pois existe um %{record} dependente
+          has_many: Não é possível excluir o registro pois existem %{record} dependentes
+  date:
+    abbr_day_names:
+      - dom
+      - seg
+      - ter
+      - qua
+      - qui
+      - sex
+      - sáb
+    abbr_month_names:
+      -
+      - jan
+      - fev
+      - mar
+      - abr
+      - mai
+      - jun
+      - jul
+      - ago
+      - set
+      - out
+      - nov
+      - dez
+    day_names:
+      - domingo
+      - segunda-feira
+      - terça-feira
+      - quarta-feira
+      - quinta-feira
+      - sexta-feira
+      - sábado
+    formats:
+      hour_minute: "%H:%M"
+      mentoring: "%d/%m/%Y - %A"
+      default: "%d/%m/%Y"
+      long: "%d de %B de %Y"
+      short: "%d de %B"
+    month_names:
+      -
+      - janeiro
+      - fevereiro
+      - março
+      - abril
+      - maio
+      - junho
+      - julho
+      - agosto
+      - setembro
+      - outubro
+      - novembro
+      - dezembro
+    order:
+      - :day
+      - :month
+      - :year
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: aproximadamente 1 hora
+        other: aproximadamente %{count} horas
+      about_x_months:
+        one: aproximadamente 1 mês
+        other: aproximadamente %{count} meses
+      about_x_years:
+        one: aproximadamente 1 ano
+        other: aproximadamente %{count} anos
+      almost_x_years:
+        one: quase 1 ano
+        other: quase %{count} anos
+      half_a_minute: meio minuto
+      less_than_x_seconds:
+        one: menos de 1 segundo
+        other: menos de %{count} segundos
+      less_than_x_minutes:
+        one: menos de um minuto
+        other: menos de %{count} minutos
+      over_x_years:
+        one: mais de 1 ano
+        other: mais de %{count} anos
+      x_seconds:
+        one: 1 segundo
+        other: "%{count} segundos"
+      x_minutes:
+        one: 1 minuto
+        other: "%{count} minutos"
+      x_days:
+        one: 1 dia
+        other: "%{count} dias"
+      x_months:
+        one: 1 mês
+        other: "%{count} meses"
+      x_years:
+        one: 1 ano
+        other: "%{count} anos"
+    prompts:
+      second: Segundo
+      minute: Minuto
+      hour: Hora
+      day: Dia
+      month: Mês
+      year: Ano
+  errors:
+    format: "Campo obrigatório não preenchido. Você precisa preencher o %{attribute}"
+    separator: ' '
+    messages:
+      accepted: deve ser aceito
+      blank: não pode ficar em branco
+      confirmation: não é igual a %{attribute}
+      empty: não pode ficar vazio
+      equal_to: deve ser igual a %{count}
+      even: deve ser par
+      exclusion: não está disponível
+      greater_than: deve ser maior que %{count}
+      greater_than_or_equal_to: deve ser maior ou igual a %{count}
+      inclusion: não está incluído na lista
+      invalid: não é válido
+      less_than: deve ser menor que %{count}
+      less_than_or_equal_to: deve ser menor ou igual a %{count}
+      model_invalid: 'A validação falhou: %{errors}'
+      not_a_number: não é um número
+      not_an_integer: não é um número inteiro
+      odd: deve ser ímpar
+      other_than: deve ser diferente de %{count}
+      present: deve ficar em branco
+      required: é obrigatório(a)
+      taken: já está em uso
+      too_long:
+        one: 'é muito longo (máximo: 1 caracter)'
+        other: 'é muito longo (máximo: %{count} caracteres)'
+      too_short:
+        one: 'é muito curto (mínimo: 1 caracter)'
+        other: 'é muito curto (mínimo: %{count} caracteres)'
+      wrong_length:
+        one: não possui o tamanho esperado (1 caracter)
+        other: não possui o tamanho esperado (%{count} caracteres)
+    template:
+      body: 'Por favor, verifique o(s) seguinte(s) campo(s):'
+      header:
+        one: 'Não foi possível gravar %{model}: 1 erro'
+        other: 'Não foi possível gravar %{model}: %{count} erros'
+  helpers:
+    select:
+      prompt: Por favor selecione
+    submit:
+      create: Criar %{model}
+      submit: Salvar %{model}
+      update: Atualizar %{model}
+  number:
+    currency:
+      format:
+        delimiter: "."
+        format: "%u %n"
+        precision: 2
+        separator: ","
+        significant: false
+        strip_insignificant_zeros: false
+        unit: R$
+    format:
+      delimiter: "."
+      precision: 3
+      separator: ","
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: "%n%u"
+        units:
+          billion:
+            one: B
+            other: B
+          million:
+            one: M
+            other: M
+          quadrillion:
+            one: q
+            other: q
+          thousand: K
+          trillion:
+            one: T
+            other: T
+          unit: ''
+      format:
+        delimiter: ''
+        precision: 3
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one: Byte
+            other: Bytes
+          eb: EB
+          gb: GB
+          kb: KB
+          mb: MB
+          pb: PB
+          tb: TB
+    percentage:
+      format:
+        delimiter: "."
+        format: "%n%"
+    precision:
+      format:
+        delimiter: "."
+  support:
+    array:
+      last_word_connector: " e "
+      two_words_connector: " e "
+      words_connector: ", "
+  time:
+    am: ''
+    formats:
+      hour_minute: "%H:%M"
+      mentoring: "%d/%m - %A"
+      newsletter_month: "%B"
+      default: "%a, %d de %B de %Y, %H:%M:%S %z"
+      long: "%d de %B de %Y, %H:%M"
+      short: "%d de %B, %H:%M"
+    pm: ''
+
+  plan_price: "$%{price}"
+  ago: "ago"
+  site:
+    title: "Online Planning Poker"
+    desc: "O PPP é uma ferramenta de planning poker online fácil e eficiente (também conhecida como scrum poker, agile poker or pointing poker) para equipes ágeis/scrum."
+    slogan: "Planning poker é fácil"
+    sub_slogan: "Estimativa e planejamento ágil, visando simplicidade e eficiência."
+    header:
+      profile: 'Perfil'
+      billing: 'Cobrança'
+    footer:
+      links: "Links"
+      about: "Sobre"
+      faq: "FAQs"
+      posts: "Posts"
+      extensions: "Extensões para navegadores"
+      pricing: "Preço"
+      donate: "Doação"
+      what: "O que é planning poker?"
+      share: "Compartilhar"
+  user:
+    login: "Entrar"
+    signup: "Cadastrar"
+    join: "INICIAR"
+    email_address: "Endereço de Email"
+    password: "Senha"
+    password_confirmation: "Confirmação de Senha"
+    log_in: "Entrar"
+    log_in_desc: "Entre no PPP para experimentar uma maneira holística de planning/ponting poker online."
+    signup_desc: "Cadastre-se no PPP para iniciar seu planning/pointing poker online. É de graça!"
+    remember_me: "Lembrar-me"
+    min_chars: "Mínimo de caracteres"
+    forgot_pw: "Esqueceu a senha?"
+    new_confirmation: "Não recebeu instruções de confirmação?"
+    new_unlock: "Não recebeu informações de desbloqueio?"
+    why_sign_up: "Por que preciso Cadastrar ou Entrar?"
+    or: "Ou"
+
+  logos:
+    title: "Mais de 1000 empresas usam o PPP"
+
+  intro:
+    room:           "Criar uma sala"
+    room_alt:       "PPP Scrum Poker - Sala"
+    room_desc:      "Aqui é onde a planning e o refinamento acontecem. Convide os participantes enviando-lhes um link ou convidando-os."
+    room_f_1:       "UI simples, fácil de usar"
+    room_f_2:       "Sem cadastro para participantes"
+    room_f_3:       "Mobile friendly"
+    room_f_4:       "modo assíncrono para times remotos"
+    dashboard:      "Painel"
+    dashboard_alt:  "PPP Scrum Poker - Painel"
+    dashboard_desc: "Veja todos os seus dados anteriores, incluindo estatísticas, histórico, salas e histórias/cards."
+    dashboard_f_1:  "Status rápido"
+    dashboard_f_2:  "Reunião de Status"
+    dashboard_f_3:  "Ver histórico e frequencia"
+    dashboard_f_4:  "Revise histórias/cards recentes"
+    scheme:         "Multiplos esquemas"
+    scheme_alt:     "PPP Scrum Poker - Esquema de pontuação"
+    scheme_desc:    "Oferecemos vários esquemas de pontos de história e esquemas de pontos personalizados para atender a diferentes requisitos de nossos usuários."
+    scheme_f_1:     "Fibonacci"
+    scheme_f_2:     "0-8"
+    scheme_f_3:     "Camiseta(XS-XXL)"
+    scheme_f_4:     "Esquema de pontuação customizado"
+    synk:             "Integração com o JIRA"
+    synk_sync_alt:    "PPP Scrum Poker - Atualizar pontos de história para o JIRA"
+    synk_add_alt:     "PPP Scrum Poker - Adicionar JIRA card/história para o PPP"
+    synk_prepare_alt: "PPP Scrum Poker - Prepare histórias/cards para refinar"
+    synk_rooms_alt:   "PPP Scrum Poker - Listar todas as salas para atualizar issues do JIRA"
+    synk_desc:        "Importe facilmente cards do JIRA para o PPP e atualize os pontos de volta para o JIRA com um clique."
+    synk_f_1:       "Conveninte e conciso"
+    synk_f_2:       "Totalmente seguro"
+    synk_f_3:       "JIRA cloud suportado"
+    synk_f_4:       "JIRA self-hosted suportado"
+
+  pricing:
+    free:
+      free_1: "Salas ilimitadas"
+      free_2: "1 esquema de pontuação personalizado"
+      free_3: "7 participantes"
+    pro:
+      pro_1: "Salas ilimitadas"
+      pro_2: "esquema de pontuação personalizado ilimitados"
+      pro_3: "participantes ilimitados"
+      pro_4: "Integração com o JIRA"
+      pro_5: "botação Assíncrona"
+
+    get_started: "Vamos testar?!"
+    try_free: "grátis por 30 dias"
+
+  posts:
+    h1: "Posts"
+    description: "Artigos relacionados ao desenvolvimento ágil de software, meus conhecimentos e experiências de ideias ao usar a ferramenta de planning poker online PPP."

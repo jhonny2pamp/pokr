@@ -8,7 +8,7 @@
   <div class="row stats">
     <div class="col-md-3">
       <div class="panel panel-none">
-        <div class="panel-heading"><h5>Stories groomed</h5></div>
+        <div class="panel-heading"><h5>Histórias preparadas</h5></div>
         <div class="panel-body">
           <p class="lead stats--data"><%= @user.stories_groomed_count %></p>
         </div>
@@ -16,7 +16,7 @@
     </div>
     <div class="col-md-3">
       <div class="panel panel-none">
-        <div class="panel-heading"><h5>Total time</h5></div>
+        <div class="panel-heading"><h5>Tempo total</h5></div>
         <div class="panel-body">
           <p class="lead stats--data"><%= (@user.time_spent/60).round(2) %> Mins</p>
         </div>
@@ -24,7 +24,7 @@
     </div>
     <div class="col-md-3">
       <div class="panel panel-none">
-        <div class="panel-heading"><h5>Average time per story</h5></div>
+        <div class="panel-heading"><h5>Estimativa média por história</h5></div>
         <div class="panel-body">
           <p class="lead stats--data">
             <%= @user.avg_per_story %>
@@ -35,7 +35,7 @@
     </div>
     <div class="col-md-3">
       <div class="panel panel-none">
-        <div class="panel-heading"><h5>Skip rate</h5></div>
+        <div class="panel-heading"><h5>porcentagem de pulo</h5></div>
         <div class="panel-body">
           <p class="lead stats--data"><%= number_to_percentage @user.skip_rate, precision: 2 %></p>
         </div>
@@ -43,7 +43,7 @@
     </div>
   </div>
   <div class="panel panel-none history">
-    <div class="panel-heading"><h5>History</h5></div>
+    <div class="panel-heading"><h5>História</h5></div>
     <div class="panel-body">
       <canvas id="myChart" width="400" height="260"></canvas>
     </div>
@@ -51,20 +51,20 @@
   <div class="row">
     <div class="col-md-7">
       <div class="panel panel-none">
-        <div class="panel-heading"><h5>Rooms</h5></div>
+        <div class="panel-heading"><h5>Salas</h5></div>
         <div class="panel-body participated">
           <%= render partial: "dashboard/room_item", collection: @user.participated_rooms, as: :room, cache: true %>
         </div>
         <% if @user.participated_rooms.present? %>
           <div class="panel-footer">
-            <a href="javascript:;" class="more">More</a>
+            <a href="javascript:;" class="more">Mais</a>
           </div>
         <% end %>
       </div>
     </div>
     <div class="col-md-5">
       <div class="panel panel-none">
-        <div class="panel-heading"><h5>Stories recently groomed</h5></div>
+        <div class="panel-heading"><h5>Histórias recentemente preparadas</h5></div>
         <div class="panel-body">
           <div class="list-group">
             <%= render partial: "dashboard/story_item", collection: @user.recent_stories, as: :story %>

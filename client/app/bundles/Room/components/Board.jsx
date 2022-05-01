@@ -59,12 +59,12 @@ export default class Board extends React.Component {
           <div className="modal-content">
             <div className="modal-header">
               <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 className="modal-title">Room closed</h4>
+              <h4 className="modal-title">Sala fechada</h4>
             </div>
             <div className="modal-body">
               <table className="table table-bordered">
                 <tbody>
-                  <tr><th>Story</th><th>Point</th></tr>
+                  <tr><th>História</th><th>Pontuação</th></tr>
                   {dataNodes}
                 </tbody>
                 {totalPoints > 0 &&
@@ -78,13 +78,13 @@ export default class Board extends React.Component {
               </table>
             </div>
             <div className="modal-footer">
-              <a href={`/rooms/${this.props.roomId}/summary`} target="_blank" className="pull-left">View summary</a>
-              <a href={`/rooms/${this.props.roomId}.xlsx`} target="_blank" className="pull-left" style={{marginLeft: 10 + 'px'}}>Download report</a>
+              <a href={`/rooms/${this.props.roomId}/summary`} target="_blank" className="pull-left">Ver resumo</a>
+              <a href={`/rooms/${this.props.roomId}.xlsx`} target="_blank" className="pull-left" style={{marginLeft: 10 + 'px'}}>Baixar relatório</a>
               {
                 this.props.role === "Moderator" &&
-                  <button type="button" className="btn btn-info" id="synk-button" data-room-id={this.props.roomId} onClick={this.handleSync}>Update to JIRA</button>
+                  <button type="button" className="btn btn-info" id="synk-button" data-room-id={this.props.roomId} onClick={this.handleSync}>Atualizar no JIRA</button>
               }
-              <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" className="btn btn-default" data-dismiss="modal">Fechar</button>
             </div>
           </div>
         </div>

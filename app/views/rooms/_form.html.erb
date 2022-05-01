@@ -12,41 +12,40 @@
   <% end %>
 
   <div class="row">
-    <div class="col-xs-8">
+    <div class="col-xs-7">
       <div class="form-group">
         <%= f.label :name do %>
-          Name
+          Nome
           <b class="required">*</b>
         <% end %>
-        <%= f.text_field :name, placeholder: "Room name", class: "form-control", required: true%>
+        <%= f.text_field :name, placeholder: "Nome da sala", class: "form-control", required: true%>
+      </div>
+    </div>
+    <div class="col-xs-3">
+      <div class="form-group">
+        <%= f.label :timer, "Tempo para votar" %>
+        <%= f.select :timer, {"1 min" => 1, "2 min" => 2, "3 min" => 3, "4 min" => 4, "5 min" => 5, "10 min" => 10, "15 min" => 15}, { include_blank: "Sem cronômetro", selected: f.object.timer.to_i }, class: 'form-control' %>
       </div>
     </div>
     <div class="col-xs-2">
       <div class="form-group">
-        <%= f.label :timer, "Egg Timer" %>
-        <%= f.select :timer, {"1 min" => 1, "2 min" => 2, "3 min" => 3, "4 min" => 4, "5 min" => 5, "10 min" => 10, "15 min" => 15}, { include_blank: "No timer", selected: f.object.timer.to_i }, class: 'form-control' %>
-      </div>
-    </div>
-    <div class="col-xs-2">
-      <div class="form-group">
-        <%= f.label :style, "Mode" %>
-        <i class="fa fa-info-circle room--style--icon" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="top" data-content="Free Style? (aka. one story mode, is old-style way which only focus on vote.)"></i>
-        <%= f.select :style, { "Free style" => 1, "Async mode" => 2 }, { include_blank: "Normal" }, class: 'form-control' %>
+        <%= f.label :style, "Modo" %>
+        <%= f.select :style, {"Assincrono" => 2 }, { include_blank: "Normal" }, class: 'form-control' %>
       </div>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label "Point values" %>
+    <%= f.label "Tipo de pontuação" %>
     <%= f.hidden_field :pv, id: 'point-values', value: @room.pv_for_form %>
     <%= f.hidden_field :scheme %>
     <%= render partial: "rooms/point_values", locals: { room: @room } %>
   </div>
   <section class="stories-section panel panel-default" id="story-section">
     <div class="panel-heading clearfix">
-      <h3 class="panel-title pull-left">Stories</h3>
+      <h3 class="panel-title pull-left">Histórias</h3>
       <a class="pull-right import" href="javascript:;" data-status="input">
         <i class="fa fa-list" aria-hidden="true"></i>
-        Import from list
+        Importar de uma lista
         <% if !@room.new_record? %>
           <i class="fa fa-question-circle has-tooltip" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Please ignore last column cuddled by #, only update title and description."></i>
       <% end %>
@@ -56,7 +55,7 @@
       <%= render partial: 'rooms/story_form', locals: { f: f } %>
       <div class="row bulk-links" style="display: none;">
         <input type="hidden" name="room[bulk]" id="room_bulk">
-        <%= text_area_tag "room[bulk_links]", @tickets, placeholder: "One story per line, use \"|\" to separate title and description OR copy from spreadsheet, like Excel, Numbers, Google Docs.", class: 'form-control col-xs-10' %>
+        <%= text_area_tag "room[bulk_links]", @tickets, placeholder: "Uma história por linha, use \"|\" para separar título e descrição OU copie de uma planilha, tipo Excel, Google Docs.", class: 'form-control col-xs-10' %>
       </div>
     </div>
     <div class="form-group">
@@ -66,11 +65,11 @@
     </div>
   </section>
   <div class="form-group">
-    <%= f.label "Moderators" %>
+    <%= f.label "Moderadores" %>
     <%= f.text_field :moderator_ids, class: "form-control room--moderators"  %>
   </div>
   <div class="actions form-group">
-    <%= f.submit "Submit", class: 'btn btn-default' %>
+    <%= f.submit "Enviar", class: 'btn btn-default' %>
   </div>
 <% end %>
 <input type="hidden" id="room-moderators" value='<%= @room.moderator_hash.to_json %>' />

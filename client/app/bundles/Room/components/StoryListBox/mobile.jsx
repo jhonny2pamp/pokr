@@ -60,9 +60,9 @@ export default class StoryListBox extends React.Component {
       if (this.state.data.ungroomed && this.state.data.ungroomed.length) {
         return this.state.data.ungroomed[0].link
       } else if(this.state.data.groomed && this.state.data.groomed.length) {
-        return "Room closed..."
+        return "Sala fechada..."
       } else {
-        return "Loading..."
+        return "Carregando..."
       }
     })();
 
@@ -81,10 +81,10 @@ export default class StoryListBox extends React.Component {
         <div id="storyListArea" className="panel-body row panel-collapse collapse">
           <ul className="nav nav-tabs" role="tablist">
             <li role="presentation" className="active">
-              <a href="#grooming-list" aria-controls="home" role="tab" data-toggle="tab">Pending</a>
+              <a href="#grooming-list" aria-controls="home" role="tab" data-toggle="tab">Pendente</a>
             </li>
             <li role="presentation">
-              <a href="#groomed-list" aria-controls="profile" role="tab" data-toggle="tab">Finished</a>
+              <a href="#groomed-list" aria-controls="profile" role="tab" data-toggle="tab">Finalizado</a>
             </li>
           </ul>
           <div className="tab-content">

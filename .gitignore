@@ -37,3 +37,5 @@ active_record_log_subscriber.rb
 /public/packs-test
 
 .gitattributes
+.idea/*
+.env*

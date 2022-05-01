@@ -117,7 +117,8 @@ class User < ApplicationRecord
   end
 
   def premium?
-    self.premium_expiration.present? && self.premium_expiration >= Time.now.utc
+    # self.premium_expiration.present? && self.premium_expiration >= Time.now.utc
+    true
   end
 
   def subscription_active?

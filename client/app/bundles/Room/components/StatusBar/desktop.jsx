@@ -24,10 +24,10 @@ export default class StatusBar extends React.Component {
   }
 
   componentDidMount() {
-    const originalTitle = "Copy to clipboard";
+    const originalTitle = "Copiar para a área de transferência";
     $('[data-toggle="tooltip"]').tooltip({container: "#tooltip-area", title: originalTitle})
       .on("click", function() {
-        $(this).attr("title", "Copied!").tooltip("fixTitle").tooltip("show");
+        $(this).attr("title", "Copiado!").tooltip("fixTitle").tooltip("show");
       }).mouseleave(function() {
         $(this).attr("title", originalTitle).tooltip("fixTitle");
       });

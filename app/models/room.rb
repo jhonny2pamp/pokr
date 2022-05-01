@@ -47,9 +47,9 @@ class Room < ApplicationRecord
 
   def display_state
     if closed?
-      "Finished"
+      "Finalizada"
     else
-      "In Progress"
+      "Em progresso"
     end
   end
 
@@ -304,11 +304,11 @@ class Room < ApplicationRecord
   def display_role role
     case role
     when 0
-      'Moderator'
+      'Moderador'
     when 1
-      'Participant'
+      'Participante'
     else
-      'Watcher'
+      'Espectador'
     end
   end
 

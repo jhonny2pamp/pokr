@@ -13,7 +13,6 @@
       <div class="panel panel-default">
         <div class="panel-heading">
           <strong><%= @room.name %></strong>
-          <span class="pull-right"><i class="fa fa-info-circle"></i> Click to vote</span>
         </div>
         <div class="panel-body">
           <ul class="list-group">
@@ -29,7 +28,7 @@
                   <%= render_leaflet_option(current_vote, @room.point_values) %>
                 </ul>
                 <div class="form-group">
-                  <label class="type-name">Comment</label>
+                  <label class="type-name">Comentário</label>
                   <textarea class="form-control" name="votes[<%= index%>][comment]" rows="3"><%= current_comment %></textarea>
                 </div>
               </li>
@@ -37,8 +36,8 @@
           </ul>
         </div>
         <div class="panel-footer">
-          <input type="submit" name="submit" value="Submit my votes" class="btn btn-default leaflet__submit" data-disable-with="Submit">
-          <a href="<%= summary_room_path(@room.slug) %>" class="pull-right leaflet__view-summary" target="_blank">View summary</a>
+          <input type="submit" name="submit" value="Enviar meus votos" class="btn btn-default leaflet__submit" data-disable-with="Submit">
+          <a href="<%= summary_room_path(@room.slug) %>" class="pull-right leaflet__view-summary" target="_blank">Ver resumo</a>
         </div>
       </div>
     </form>
@@ -46,5 +45,5 @@
 </div>
 
 <script type="text/javascript">
-  Sentry.init({ dsn: 'https://e1070f75c7b24052a1784b4ce297b9e2@sentry.io/221730' });
+    Sentry.init({ dsn: 'https://e1070f75c7b24052a1784b4ce297b9e2@sentry.io/221730' });
 </script>

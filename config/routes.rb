@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   end
 
   constraints admin_constraint do
-    mount Logster::Web => "/logs"
+    # mount Logster::Web => "/logs"
     mount Sidekiq::Web => '/sidekiq'
     get 'marketing/send_email'
     post 'marketing/send_email'
@@ -41,6 +41,7 @@ Rails.application.routes.draw do
       post :leaflet_submit
       get :view, to: 'rooms#leaflet_view'
       post :leaflet_finalize_point
+      post :jira_update_points
     end
   end
 

@@ -70,7 +70,7 @@ class RoomsController < ApplicationController
     respond_to do |format|
       if repo.save @room
         remove_memorization_of_moderators
-        format.html { redirect_to room_path(@room.slug), notice: "Room was successfully created." }
+        format.html { redirect_to room_path(@room.slug), notice: "Sala criada com sucesso." }
         format.json { render :show, status: :created, location: @room }
       else
         format.html { render :new }
@@ -89,7 +89,7 @@ class RoomsController < ApplicationController
           user_id: current_user.id,
           data: 'next-story',
           type: 'action'
-        format.html { redirect_to room_path(@room.slug), notice: 'Room was successfully updated.' }
+        format.html { redirect_to room_path(@room.slug), notice: 'Sala atualizada com sucesso.' }
         format.json { render :show, status: :ok, location: @room }
       else
         format.html { render :edit }
@@ -104,7 +104,7 @@ class RoomsController < ApplicationController
     head :bad_request and return if @room.created_by != current_user.id
     @room.soft_delete
     respond_to do |format|
-      format.html { redirect_to rooms_url, notice: 'Room was successfully destroyed.' }
+      format.html { redirect_to rooms_url, notice: 'sala destruída com sucesso.' }
       format.json { head :no_content }
       format.js
     end
@@ -175,7 +175,7 @@ class RoomsController < ApplicationController
       next unless @room.stories.pluck(:uid).include?(vote[:story_id])
       UserStoryPoint.vote(current_user.id, vote[:story_id], vote[:point], vote[:comment])
     end
-    redirect_to room_path(@room.slug), flash: { success: "Thanks for your votes, moderator will see your votes!" }
+    redirect_to room_path(@room.slug), flash: { success: "obrigado pelo voto, os moderadores irão ver seu voto!" }
   end
 
   def leaflet_view
@@ -196,6 +196,47 @@ class RoomsController < ApplicationController
       user_story_point.update_attribute(:finalized, true)
 
       head :ok
+    end
+  end
+
+  def jira_update_points
+    response_message = ''
+
+    begin
+      username = ENV['JIRA_LOGIN']
+      api_token = ENV['JIRA_TOKEN']
+
+      if api_token && username
+        options = {
+          :username => username,
+          :password => api_token,
+          :site     => 'https://distrito-main.atlassian.net/',
+          :context_path => '',
+          :auth_type => :basic
+        }
+
+        client = JIRA::Client.new(options)
+
+        room = Room.find_by(id: params[:id])
+
+        if room
+          room.stories.each do |story|
+            if story.link.index('atlassian')
+              issue = client.Issue.find(story.link.split('/').last) rescue nil
+              if issue
+                issue.save({ 'fields' => { 'customfield_10028' => story.point.to_f } })
+              end
+            end
+          end
+          response_message = 'Histórias atualizadas com sucesso!'
+        end
+      else
+        response_message = 'Erro de autenticação no JIRA!'
+      end
+    rescue Exception => e
+      response_message = 'Erro desconhecido.'
+    ensure
+      redirect_to dashboard_index_path, notice: response_message
     end
   end
 

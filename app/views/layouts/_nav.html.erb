@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" style="height: 106px;">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -8,25 +8,27 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">Pokre<span>x</span></a>
+      <a class="navbar-brand" href="/"><%= image_tag("home/ppp.png") %></a>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="navbar-collapse">
       <ul class="nav navbar-nav">
-        <li><a href="/donate" target="_blank">❤️Donate</a></li>
+        <li><a href="/donate" target="_blank">❤️<%= t('site.footer.donate') %></a></li>
         <% unless current_user %>
-          <li><a href="<%= new_user_session_path %>">Sign in</a></li>
+          <li><a href="<%= new_user_session_path %>"><%= t('user.log_in') %></a></li>
           <li><a class="vertical-spliter">|</a></li>
-          <li><a href="<%= new_user_registration_path %>">Sign up</a></li>
+          <li><a href="<%= new_user_registration_path %>"><%= t('user.signup') %></a></li>
         <% end %>
       </ul>
       <% if current_user %>
         <ul class="nav navbar-nav navbar-right">
-          <li>
-            <a href="<%= new_room_path %>" class="new-room">
-              ✏️ Create room
-            </a>
-          </li>
+          <% if current_user.role == 0 %>
+            <li>
+              <a href="<%= new_room_path %>" class="new-room">
+                ✏️ <%= t('intro.room') %>
+              </a>
+            </li>
+          <% end %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               <img src="<%= current_user.letter_avatar %>" class="img-circle profile-image">
@@ -37,18 +39,15 @@
             </a>
             <ul class="dropdown-menu">
               <li><a href="<%= dashboard_index_path %>">
-                📊 Dashboard
+                📊 <%= t('intro.dashboard') %>
               </a></li>
               <li><a href="<%= profile_path %>">
-                ⚙ Profile
-              </a></li>
-              <li><a href="/billing" target="_blank">
-                💳 Billing
+                ⚙ <%= t('site.header.profile') %>
               </a></li>
               <li role="separator" class="divider"></li>
               <li>
                 <%= link_to destroy_user_session_path, method: :delete do %>
-                  🏃Sign out
+                  🏃Sair
                 <% end %>
               </li>
             </ul>
@@ -59,7 +58,7 @@
     <form class="navbar-form navbar-right typeahead">
       <div class="form-group">
         <div class="input-group group">
-          <input class="form-control" id="typeahead-input" name="search" placeholder="Search tickets/rooms" autocomplete="off"  type="text">
+          <input class="form-control" id="typeahead-input" name="search" placeholder="Procurar cards/salas" autocomplete="off"  type="text">
           <i class="fa fa-search"></i>
         </div>
       </div>

@@ -28,7 +28,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
 gem 'redis'
-gem 'logster'
+# gem 'logster'
 gem 'http_accept_language'
 
 # Use jquery as the JavaScript library
@@ -53,6 +53,9 @@ gem 'rubyzip', '~> 1.3.0'
 gem 'axlsx', '3.0.0.pre'
 gem 'axlsx_rails'
 
+gem 'jira-ruby', :require => 'jira-ruby'
+gem 'dotenv'
+
 # Disable for error:
 # Rack app error handling request { POST /mini-profiler-resources/results }
 # #<Errno::ETIMEDOUT: Operation timed out - user specified timeout>
@@ -70,6 +73,7 @@ group :development, :test do
   gem 'pry-doc'
   gem 'pry-nav'
   gem 'pry-rails'
+  gem 'pry-byebug'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
