@@ -33,7 +33,17 @@
           <h4><%= link_to story_item[:link], show_story_link(story_item[:link]), target: "_blank" %></h4>
           <p class="leaflet__ticket-desc"><%= story_item[:desc] %></p>
           <% if story_item[:individuals].blank? %>
-            <div class="alert alert-info" role="alert">Ninguém votou ainda... Envie o link da sala para os membros da sua equipe.</div>
+            <div id="story_<%= story_item[:id] %>" class="alert alert-info" role="alert">Ninguém votou ainda... Envie o link da sala para os membros da sua equipe.</div>
+            <table class="table hide story_<%= story_item[:id] %>">
+              <thead>
+                <th class="col-md-3">Participante</th>
+                <th class="col-md-1">Pontos</th>
+                <th class="col-md-7">Comentário</th>
+                <th class="col-md-1">Ação</th>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
           <% else %>
             <table class="table">
               <thead>
@@ -47,7 +57,6 @@
                   <tr data-vote-id="<%= individual[:user_story_point_id] %>">
                     <td>
                       <a href="javascript:void(0);" class="person">
-                        <i class="person__avatar"><%= image_tag individual[:user_avatar], class: "profile-image img-circle"%></i>
                         <%= individual[:user_name] %>
                       </a>
                     </td>
@@ -78,7 +87,32 @@
         connected: function() {},
         disconnected: function() {},
         received: function(data) {
-            console.log(data);
+          if (data.vote != undefined && data.vote.points != ""){
+            var story_id = data.vote.story_id;
+            var comment = data.vote.comment != null ? data.vote.comment : '';
+            var vote_point = data.vote.points;
+            var vote_id = data.vote.id;
+            var user_name = data.user.name;
+
+            $('#story_'+story_id).hide();
+
+              $('table.story_' + story_id + ' tbody').append('' +
+                '<tr data-vote-id="' + vote_id + '">' +
+                  '<td>' +
+                    '<a href="javascript:void(0);" class="person">' +
+                      user_name +
+                    '</a>' +
+                  '</td>' +
+                  '<td>' + vote_point + '</td>' +
+                  '<td>' + comment + '</td>' +
+                  '<td class="table__finalize-link-col">' +
+                    '<a href="javascript:void(0);" class="finalize-link-col__finalize-link">Finalizar</a>' +
+                  '</td>' +
+                '</tr>'
+              );
+
+            $('table.story_'+story_id).toggleClass('hide')
+          }
         }
     });
 
